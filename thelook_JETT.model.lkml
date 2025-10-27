@@ -1,4 +1,4 @@
-connection: "thelook"
+connection: "bq_faa"
 
 # include all the views
 include: "*.view"
