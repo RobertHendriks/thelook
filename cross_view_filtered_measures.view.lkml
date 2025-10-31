@@ -9,7 +9,7 @@ view: cross_view_filtered_measures  {
     type: sum
     sql:
     CASE WHEN ${products.brand} = 'Calvin Klein'
-            THEN ${order_items.sale_price} - ${inventory_items.cost}
+            THEN ${cross_view_filtered_measures.sale_price} - ${inventory_items.cost}
       ELSE NULL
       END ;;
     value_format_name: eur
