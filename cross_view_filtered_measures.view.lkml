@@ -12,11 +12,12 @@ view: cross_view_filtered_measures  {
     label: "€ Calvin Klein Margin Option 2 {Cross View}"
     description: "The amount of margin made on Calvin Klein products."
     type: sum
-    sql:
-    CASE WHEN ${products.brand} = 'Calvin Klein'
-            THEN ${sale_price} - ${inventory_items.cost}
-      ELSE NULL
-      END ;;
+    sql:${sale_price} - ${inventory_items.cost}
+    # CASE WHEN ${products.brand} = 'Calvin Klein'
+            # THEN ${sale_price} - ${inventory_items.cost}
+      # ELSE NULL
+      # END ;;
+      filters: [products.brand: "Calvin Klein"]
     value_format_name: eur
   }
 
