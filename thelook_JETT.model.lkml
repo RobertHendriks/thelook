@@ -1,4 +1,4 @@
-connection: "ca_lab"
+connection: "bq_faa"
 
 # include all the views
 include: "*.view"
