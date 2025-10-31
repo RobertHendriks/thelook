@@ -55,7 +55,7 @@ explore: order_items {
   }
   # *** ADD SPOKE VIEW AS A JOIN ***
   join: cross_view_filtered_measures {
-    view_label: "Order Items - Custom Metrics"  # Group spoke fields separately
+    view_label: "Order Items - Cross View Metrics"  # Group spoke fields separately
     type: left_outer
     sql_on: ${order_items.id} = ${cross_view_filtered_measures.id} ;;
     relationship: one_to_one
