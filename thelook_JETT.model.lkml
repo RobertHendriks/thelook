@@ -29,6 +29,8 @@ explore: products {}
 explore: users {}
 
 ### CORE ORDER_ITEMS EXPLORE (The Hub) - NO CHANGES HERE ###
+
+
 explore: order_items {
   join: inventory_items {
     type: left_outer
@@ -53,9 +55,9 @@ explore: order_items {
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
   }
-  # *** ADD SPOKE VIEW AS A JOIN ***
+  #----- Added cross_view_filtered_measuresment ---#
   join: cross_view_filtered_measures {
-    view_label: "Order Items - Cross View Metrics"  # Group spoke fields separately
+    view_label: "Order Items - Cross View Metrics"
     type: left_outer
     sql_on: ${order_items.id} = ${cross_view_filtered_measures.id} ;;
     relationship: one_to_one
