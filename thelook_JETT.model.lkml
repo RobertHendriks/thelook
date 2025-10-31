@@ -53,6 +53,13 @@ explore: order_items {
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
   }
+  # *** ADD SPOKE VIEW AS A JOIN ***
+  join: cross_view_filtered_measures {
+    view_label: "Order Items - Custom Metrics"  # Group spoke fields separately
+    type: left_outer
+    sql_on: ${order_items.id} = ${cross_view_filtered_measures.id} ;;
+    relationship: one_to_one
+  }
 }
 
 # ================================================================
@@ -61,6 +68,7 @@ explore: order_items {
 
 ### SPOKE ORDER_ITEMS EXPLORE (The Spoke) - CORRECTED IMPLEMENTATION ###
 explore: order_items_spoke_metrics {
+  hidden: yes
   # Use view_name to swap in the spoke view as the base
   view_name: cross_view_filtered_measures
 
