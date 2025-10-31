@@ -2,6 +2,8 @@ connection: "bq_faa"
 
 # include all the views
 include: "*.view"
+include: "/refinements/*.*"
+
 
 # include all the dashboards
 include: "*.dashboard"
