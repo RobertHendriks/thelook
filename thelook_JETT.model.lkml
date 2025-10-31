@@ -2,7 +2,7 @@ connection: "bq_faa"
 
 # include all the views
 include: "*.view"
-include: "/refinements/*.*"
+#include: "/refinements/*.*"
 
 
 # include all the dashboards
@@ -15,7 +15,7 @@ explore: inventory_items {
     relationship: many_to_one
   }
 }
-
+########
 explore: order_items {
   join: inventory_items {
     type: left_outer
@@ -41,6 +41,37 @@ explore: order_items {
     relationship: many_to_one
   }
 }
+
+#############
+explore: cross_view_filtered_measures {
+  join: inventory_items {
+    type: left_outer
+    sql_on: ${cross_view_filtered_measures.inventory_item_id} = ${inventory_items.id} ;;
+    relationship: many_to_one
+  }
+
+  join: orders {
+    type: left_outer
+    sql_on: ${cross_view_filtered_measures.order_id} = ${orders.id} ;;
+    relationship: many_to_one
+  }
+
+  join: products {
+    type: left_outer
+    sql_on: ${inventory_items.product_id} = ${products.id} ;;
+    relationship: many_to_one
+  }
+
+  join: users {
+    type: left_outer
+    sql_on: ${orders.user_id} = ${users.id} ;;
+    relationship: many_to_one
+  }
+}
+
+
+
+##########
 
 explore: orders {
   join: users {
