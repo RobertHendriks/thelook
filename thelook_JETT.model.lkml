@@ -64,6 +64,15 @@ explore: order_items {
   }
 }
 
+explore: +order_items {
+  query: order_count_by_month {
+    description: "Number of orders placed by month in 2019"
+    dimensions: [orders.created_month]
+    measures: [orders.count]
+    filters: [orders.created_date: "2019"]
+  }
+}
+
 # ================================================================
 # || SPOKE EXPLORES (Your Team's Extension) ||
 # ================================================================
